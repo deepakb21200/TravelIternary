@@ -32,6 +32,15 @@ create table hotel_details (
   created_at timestamp default now()
 );
 
+create table vehicle_details (
+  id uuid primary key default gen_random_uuid(),
+  vehicle_type text not null,
+  model_name text not null,
+  seating_capacity integer not null,
+  ac_type text check (ac_type in ('AC','Non-AC')) not null,
+  notes text,
+  created_at timestamp with time zone default now()
+);
 
 
 
@@ -41,3 +50,105 @@ create table hotel_details (
 
 
 
+
+
+
+
+
+
+create table vehicle_details (
+  id uuid primary key default gen_random_uuid(),
+  vehicle_type text not null,
+  model_name text not null,
+  seating_capacity integer not null,
+  ac_type text check (ac_type in ('AC','Non-AC')) not null,
+  notes text,
+  created_at timestamp with time zone default now()
+);
+
+
+Vehicle Type: SUV
+Model / Name: Innova Crysta
+Seating Capacity: 7
+AC / Non-AC: AC
+Notes: Suitable for family travel and outstation tours
+
+
+
+
+Vehicle Type: Sedan
+Model / Name: Swift Dzire
+Seating Capacity: 4
+AC / Non-AC: AC
+Notes: Best for local city transfer
+
+
+
+
+
+
+
+
+
+
+Vehicle Type: Mini Bus
+Model / Name: Traveller 12 Seater
+Seating Capacity: 12
+AC / Non-AC: Non-AC
+Notes: Good for group travel
+
+
+
+
+
+
+
+
+
+
+
+ab ek component banao ServiceDetails naam se 
+usme fields hogi  ki from  filed  and to filed (ye field optional ho sakti hai)and agar to dono fields daalenge to like from feild me hai Delhi and to field me hai mathura 
+to save ho jayega Delhi to mathura jo independent from and to filed se and ab ek field banegi location image jo mandatory hogi and ab option banege ki hum 
+multiple service types banasakte hai to usme 3 cheeze hongi service type and description (description ke liye tum sun edior ka use karna )and image (image optional ho sakti hai)
+and multiple service types ho sakte hai 
+and colors tum light use karna and iski table supabse me yehi rahegi tum kuch change matkarna table mein
+
+
+
+
+create table service_details (
+  id uuid primary key default gen_random_uuid(),
+  from_location text,
+  to_location text,
+  route_name text not null,
+  location_image text not null,
+  service_types jsonb,
+  created_at timestamp with time zone default now()
+);
+
+
+ek component banao PackageContent jisme  input field hogi Content Name  and inclusions label and exclusions label and iske baad  hoga ki 
+hum multiple inclusions and exclusions add kar sakte hai and delete kar sakte hai. to ab karo create and ui acha banana 
+
+
+
+
+create table package_content (
+  id uuid primary key default gen_random_uuid(),
+
+  content_name text not null,
+
+  inclusion_label text,
+
+  exclusion_label text,
+
+  inclusions text[],
+
+  exclusions text[],
+
+  created_at timestamp with time zone default now()
+);
+
+
+ab ek compponment banao terms conditona ka jisme field hoga Terms name and Termans and contions and ye bhi multiple hoga par ek baar me ek hi baneega
